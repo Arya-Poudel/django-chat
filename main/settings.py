@@ -12,7 +12,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-fg5(kib10cbasaz
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-chat-98.herokuapp.com']
 
 
 # Application definition
