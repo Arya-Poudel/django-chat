@@ -1,0 +1,58 @@
+{% extends 'frontend/base.html' %}
+
+{% block body %}
+
+<body>
+   <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Chat</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+        <h3 class="room-name">Conversations in: {{room_name}}</h3>
+        {% for message in messages.all %}
+            {% if message.sent_by.id == request.user.id %}
+            <div class="message-sender">
+                {{message.content}}
+            </div>
+            {% else %}
+            <div>
+                 <div class="user-name">
+                    <p>{{message.sent_by}}</p>
+                 </div>
+                 <div class="message-receiver">
+                    {{message.content}}
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {{ request.user.id|json_script:"user_id"}}
+    <div id="app" class="container">
+    <!-- React will load here -->
+    </div>
+
+{% load static %}
+    <script src="{% static 'frontend/main.js' %}"></script>
+    <script>
+     $(document).foundation();
+    </script>
+</body>
+
+{% endblock %}

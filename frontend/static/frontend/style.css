@@ -1,0 +1,33 @@
+.room-name {
+    border-radius: 5px;
+    color: #1c2e32;
+    border-bottom: 1px solid black;
+}
+
+.message-sender, .message-receiver{
+	color:  #ffffff;
+	width: 35%;
+	padding: 8px;
+	border-radius: 2em;
+	margin: 15px 0px;
+	font-family: 'Poppins', sans-serif;
+}
+
+.message-sender {
+	background-color: #71aeeb;
+	margin-left: auto;
+}
+
+.message-receiver {
+	background-color: #62bd56;
+}
+
+.container{
+	width: 90%;
+	margin: 20px auto;
+}
+
+.user-name{
+	color: #62bd56;
+}
+
